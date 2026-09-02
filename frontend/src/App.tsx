@@ -72,7 +72,9 @@ type Session = { token: string; name: string; role: Role };
 type AppNotification = { id: string; message: string; kind: string; createdAt: string; read: boolean };
 type GmailConnection = { configured: boolean; connected: boolean; email: string | null };
 type GmailMessage = { id: string; subject: string; from: string; to: string; date: string; body: string };
-const API = "/api";
+// Local development uses Vite's /api proxy. Cloudflare Pages supplies the
+// public Render API URL at build time through VITE_API_URL.
+const API = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
 const SESSION_STORAGE_KEY = "vectrace-crm-session";
 const vapidKeyBytes = (value: string) => {
   const padded = `${value}${"=".repeat((4 - value.length % 4) % 4)}`.replace(/-/g, "+").replace(/_/g, "/");
