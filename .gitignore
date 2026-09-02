@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.log
+.tmp/
+.codex/
+.claude/
+loadmatch-fmcsa/
+*.tsbuildinfo

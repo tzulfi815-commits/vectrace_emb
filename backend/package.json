@@ -1,0 +1,26 @@
+{
+  "name": "@stitchcrm/backend",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1116.0",
+    "@fastify/cors": "latest",
+    "@types/web-push": "^3.6.4",
+    "bcryptjs": "^3.0.3",
+    "fastify": "latest",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "tsx": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
