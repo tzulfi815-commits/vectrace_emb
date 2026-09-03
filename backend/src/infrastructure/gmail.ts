@@ -7,6 +7,7 @@ type StoredConnection = {
   refreshToken: string;
   connectedAt: string;
 };
+type StoredConnectState = { id: string; userId: string; expiresAt: number };
 
 export type GmailMessage = {
   id: string;
@@ -21,6 +22,7 @@ export type GmailMessage = {
 const googleAuthorizeUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 const googleTokenUrl = "https://oauth2.googleapis.com/token";
 const recordCollection = "gmail_connections";
+const oauthStateCollection = "gmail_oauth_states";
 const key = () => createHash("sha256").update(env("SUPABASE_SERVICE_ROLE_KEY")).digest();
 const baseUrl = () => env("SUPABASE_URL").replace(/\/$/, "");
 const serviceKey = () => env("SUPABASE_SERVICE_ROLE_KEY");
@@ -96,9 +98,13 @@ export class GmailService {
     return (await tokenResponse.json() as { access_token: string }).access_token;
   }
 
-  createConnectUrl(userId: string) {
+  async createConnectUrl(userId: string) {
     const state = randomBytes(32).toString("base64url");
-    this.connectStates.set(state, { userId, expiresAt: Date.now() + 10 * 60 * 1000 });
+    const pending: StoredConnectState = { id: state, userId, expiresAt: Date.now() + 10 * 60 * 1000 };
+    this.connectStates.set(state, pending);
+    // A serverless function can be replaced between the redirect and callback.
+    // Keep the state for ten minutes in Supabase so the callback is still valid.
+    await this.records("crm_records", { method: "POST", headers: { prefer: "resolution=merge-duplicates" }, body: JSON.stringify({ collection: oauthStateCollection, id: state, data: pending }) });
     const query = new URLSearchParams({
       client_id: env("GOOGLE_CLIENT_ID"),
       redirect_uri: redirectUri(),
@@ -112,8 +118,12 @@ export class GmailService {
   }
 
   async finishConnect(code: string, state: string) {
-    const pending = this.connectStates.get(state);
+    const inMemory = this.connectStates.get(state);
     this.connectStates.delete(state);
+    const query = new URLSearchParams({ collection: `eq.${oauthStateCollection}`, id: `eq.${state}`, select: "data", limit: "1" });
+    const stateRows = await (await this.records(`crm_records?${query}`)).json() as Array<{ data: StoredConnectState }>;
+    const pending = inMemory ?? stateRows[0]?.data;
+    if (stateRows.length) await this.records(`crm_records?${query}`, { method: "DELETE" });
     if (!pending || pending.expiresAt < Date.now()) throw new Error("Gmail connection expired. Please try again from the CRM.");
     const tokenResponse = await fetch(googleTokenUrl, {
       method: "POST",

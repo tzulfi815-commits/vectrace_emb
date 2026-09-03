@@ -133,7 +133,7 @@ export async function buildServer() {
     const current = session(req);
     allow(current, ["Admin", "Caller"]);
     if (!gmail) throw Object.assign(new Error("Gmail is not configured on the server"), { statusCode: 503 });
-    return { url: gmail.createConnectUrl(current.userId) };
+    return { url: await gmail.createConnectUrl(current.userId) };
   });
   app.get("/api/gmail/callback", async (req, reply) => {
     if (!gmail) return reply.code(503).type("text/html").send("<h2>Gmail is not configured.</h2>");
@@ -458,5 +458,8 @@ export async function buildServer() {
 const entrypoint = process.argv[1] ?? "";
 if (entrypoint.endsWith("server.ts") || entrypoint.endsWith("server.js")) {
   const app = await buildServer();
-  await app.listen({ port: 3001, host: "0.0.0.0" });
+  // Hosting platforms provide PORT; local development continues on 3001.
+  const port = Number(process.env.PORT ?? 3001);
+  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error("PORT must be a valid TCP port");
+  await app.listen({ port, host: "0.0.0.0" });
 }

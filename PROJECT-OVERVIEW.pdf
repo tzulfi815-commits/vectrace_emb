@@ -1,0 +1,1717 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 6 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 7916 >>
+stream
+BT
+/F1 18 Tf
+42 800 Td
+(Vectrace Emb CRM - Project Overview) Tj
+-42 -800 Td
+/F1 8 Tf
+42 787 Td
+() Tj
+-42 -787 Td
+/F1 8.5 Tf
+42 783 Td
+(Prepared: 3 September 2026) Tj
+-42 -783 Td
+/F1 8.5 Tf
+42 772 Td
+(Evidence: source code, package configuration, and supabase/schema.sql in this repository.) Tj
+-42 -772 Td
+/F1 8.5 Tf
+42 761 Td
+(Secrets: intentionally redacted. Environment variable names are listed, never values.) Tj
+-42 -761 Td
+/F1 8 Tf
+42 750 Td
+() Tj
+-42 -750 Td
+/F1 14 Tf
+42 746 Td
+(1. What this project is) Tj
+-42 -746 Td
+/F1 8 Tf
+42 733 Td
+() Tj
+-42 -733 Td
+/F1 8.5 Tf
+42 729 Td
+(Vectrace Emb CRM is an internal, desktop-first CRM for an embroidery/digitizing/vector-art/custom-patches) Tj
+-42 -729 Td
+/F1 8.5 Tf
+42 718 Td
+(business. It is intended for the business team-not for customers directly.) Tj
+-42 -718 Td
+/F1 8 Tf
+42 707 Td
+() Tj
+-42 -707 Td
+/F1 8.5 Tf
+42 703 Td
+(The CRM tracks a lead from initial contact through a five-stage opportunity process, free-trial work,) Tj
+-42 -703 Td
+/F1 8.5 Tf
+42 692 Td
+(conversion to a client, project assignment to a designer, delivered files, payments, expenses, reports,) Tj
+-42 -692 Td
+/F1 8.5 Tf
+42 681 Td
+(Gmail-based email lookup, and notifications.) Tj
+-42 -681 Td
+/F1 8 Tf
+42 670 Td
+() Tj
+-42 -670 Td
+/F1 11 Tf
+42 666 Td
+(Current user types) Tj
+-42 -666 Td
+/F1 8 Tf
+42 659 Td
+() Tj
+-42 -659 Td
+/F1 8.5 Tf
+42 655 Td
+(| User type | What the code permits them to see and do |) Tj
+-42 -655 Td
+/F1 8.5 Tf
+42 644 Td
+(| --- | --- |) Tj
+-42 -644 Td
+/F1 8.5 Tf
+42 633 Td
+(| Admin | Full dashboard; all leads; import and bulk-assign leads; clients; designers; project) Tj
+-42 -633 Td
+/F1 8.5 Tf
+42 622 Td
+(assignments; designer payments; finance; reports; users; create/rename/role-assign CRM accounts; delete) Tj
+-42 -622 Td
+/F1 8.5 Tf
+42 611 Td
+(leads/clients/designers; upload client/trial files; assign work and send designer email. |) Tj
+-42 -611 Td
+/F1 8.5 Tf
+42 600 Td
+(| Caller | Their own assigned/captured leads; add/edit leads; call logs; opportunity stages; POCs;) Tj
+-42 -600 Td
+/F1 8.5 Tf
+42 589 Td
+(follow-ups; trials; Gmail matching-email lookup; upload trial files. They cannot access Clients,) Tj
+-42 -589 Td
+/F1 8.5 Tf
+42 578 Td
+(Designers, Finance, Reports, Users, or delete leads. |) Tj
+-42 -578 Td
+/F1 8.5 Tf
+42 567 Td
+(| Designer | Only My Work. They see their own assignments, can download authorized client files, change) Tj
+-42 -567 Td
+/F1 8.5 Tf
+42 556 Td
+(status, upload/submit final files, and remove their own delivered files. Sensitive client-company and) Tj
+-42 -556 Td
+/F1 8.5 Tf
+42 545 Td
+(designer-email fields are omitted from assignment responses sent to designers. |) Tj
+-42 -545 Td
+/F1 8 Tf
+42 534 Td
+() Tj
+-42 -534 Td
+/F1 8.5 Tf
+42 530 Td
+(The browser navigation matches this: Admin sees Dashboard, Leads, Opportunities, Clients, Designers,) Tj
+-42 -530 Td
+/F1 8.5 Tf
+42 519 Td
+(Finance, Reports, and Users; Caller sees Dashboard, Leads, and Opportunities; Designer sees only My Work.) Tj
+-42 -519 Td
+/F1 8 Tf
+42 508 Td
+() Tj
+-42 -508 Td
+/F1 14 Tf
+42 504 Td
+(2. What actually works) Tj
+-42 -504 Td
+/F1 8 Tf
+42 491 Td
+() Tj
+-42 -491 Td
+/F1 8.5 Tf
+42 487 Td
+(This is based on implemented routes and UI code, not on the original README. The README still calls) Tj
+-42 -487 Td
+/F1 8.5 Tf
+42 476 Td
+(several functions "deferred" even though parts of them have since been implemented.) Tj
+-42 -476 Td
+/F1 8 Tf
+42 465 Td
+() Tj
+-42 -465 Td
+/F1 11 Tf
+42 461 Td
+(Working in code \(subject to live-service credentials being valid\)) Tj
+-42 -461 Td
+/F1 8 Tf
+42 454 Td
+() Tj
+-42 -454 Td
+/F1 8.5 Tf
+42 450 Td
+(- Email/password sign-in through Supabase Auth, with roles from crm_profiles.) Tj
+-42 -450 Td
+/F1 8.5 Tf
+42 439 Td
+(- Admin invitation flow: the CRM can invite a user, create/update their CRM role, and let the invitee) Tj
+-42 -439 Td
+/F1 8.5 Tf
+42 428 Td
+(choose a password.) Tj
+-42 -428 Td
+/F1 8.5 Tf
+42 417 Td
+(- 14-day server sessions, stored as SHA-256 hashes in the sessions CRM collection. The raw session token) Tj
+-42 -417 Td
+/F1 8.5 Tf
+42 406 Td
+(is stored in browser local storage.) Tj
+-42 -406 Td
+/F1 8.5 Tf
+42 395 Td
+(- Leads: create, list/filter, import, edit, delete \(Admin\), assign/bulk assign, follow-ups, manual call) Tj
+-42 -395 Td
+/F1 8.5 Tf
+42 384 Td
+(logs, statuses, and duplicate checks by phone/company.) Tj
+-42 -384 Td
+/F1 8.5 Tf
+42 373 Td
+(- Opportunity workflow: POCs, Stage 3 email log, free-trial details and attachments, conversion/ordering.) Tj
+-42 -373 Td
+/F1 8.5 Tf
+42 362 Td
+(The computed stages are: 1 call connected, 2 POC, 3 email sent, 4 free trial, 5 paid/won.) Tj
+-42 -362 Td
+/F1 8.5 Tf
+42 351 Td
+(- Clients, client orders, payments, finance summaries, expenses, and basic sales/caller/finance reports.) Tj
+-42 -351 Td
+/F1 8.5 Tf
+42 340 Td
+(- Designer directory, assignment, project status, designer payment tracking, up to six delivered files) Tj
+-42 -340 Td
+/F1 8.5 Tf
+42 329 Td
+(per assignment, and Admin download of delivered files.) Tj
+-42 -329 Td
+/F1 8.5 Tf
+42 318 Td
+(- Cloudflare R2 file upload/download through the backend. Uploads are limited to 25 MB and a defined) Tj
+-42 -318 Td
+/F1 8.5 Tf
+42 307 Td
+(extension allow-list.) Tj
+-42 -307 Td
+/F1 8.5 Tf
+42 296 Td
+(- File authorization: Admin can download all authorized CRM files; Callers only trial files on leads they) Tj
+-42 -296 Td
+/F1 8.5 Tf
+42 285 Td
+(own/captured; Designers only files tied to their own assignment.) Tj
+-42 -285 Td
+/F1 8.5 Tf
+42 274 Td
+(- Gmail OAuth for Admin/Caller accounts. It can load up to three recent matching emails for a selected) Tj
+-42 -274 Td
+/F1 8.5 Tf
+42 263 Td
+(POC and can send a plain-text project-assignment email from a connected Admin Gmail account.) Tj
+-42 -263 Td
+/F1 8.5 Tf
+42 252 Td
+(- Persistent in-app notifications and optional Web Push subscription/notifications. Browser push requires) Tj
+-42 -252 Td
+/F1 8.5 Tf
+42 241 Td
+(the user to click Enable alerts and grant browser permission.) Tj
+-42 -241 Td
+/F1 8.5 Tf
+42 230 Td
+(- Automated tests exist and previously passed locally: 16 backend tests. Unverified at the time of this) Tj
+-42 -230 Td
+/F1 8.5 Tf
+42 219 Td
+(report: current deployed test status, because no deployed environment is defined in the repository.) Tj
+-42 -219 Td
+/F1 8 Tf
+42 208 Td
+() Tj
+-42 -208 Td
+/F1 11 Tf
+42 204 Td
+(Half-built / incomplete / fragile) Tj
+-42 -204 Td
+/F1 8 Tf
+42 197 Td
+() Tj
+-42 -197 Td
+/F1 8.5 Tf
+42 193 Td
+(- Hosting is not configured in source. There is no render.yaml, Cloudflare Worker/Pages configuration,) Tj
+-42 -193 Td
+/F1 8.5 Tf
+42 182 Td
+(Dockerfile, CI workflow, production URL, or deployment migration. The project is definitely runnable) Tj
+-42 -182 Td
+/F1 8.5 Tf
+42 171 Td
+(locally; an online deployment is unverified.) Tj
+-42 -171 Td
+/F1 8.5 Tf
+42 160 Td
+(- The frontend supports VITE_API_URL for a deployed API, but the repository does not provide a production) Tj
+-42 -160 Td
+/F1 8.5 Tf
+42 149 Td
+(environment template or hosting setup.) Tj
+-42 -149 Td
+/F1 8.5 Tf
+42 138 Td
+(- Gmail connection state \(state parameter\) is held in a process-local Map. It works on one continuously) Tj
+-42 -138 Td
+/F1 8.5 Tf
+42 127 Td
+(running backend process, but can fail if the server restarts between clicking Connect Gmail and Google) Tj
+-42 -127 Td
+/F1 8.5 Tf
+42 116 Td
+(returning to the callback.) Tj
+-42 -116 Td
+/F1 8.5 Tf
+42 105 Td
+(- Notifications are persisted, but delivery is best-effort: notification writes and browser push are) Tj
+-42 -105 Td
+/F1 8.5 Tf
+42 94 Td
+(fired asynchronously rather than inside a transaction/job queue.) Tj
+-42 -94 Td
+/F1 8.5 Tf
+42 83 Td
+(- The browser notification service worker exists, but the project has no deployed HTTPS site. Push) Tj
+-42 -83 Td
+/F1 8.5 Tf
+42 72 Td
+(behaviour in a real production browser is therefore unverified.) Tj
+-42 -72 Td
+/F1 8.5 Tf
+42 61 Td
+(- The finance model is operational but not accounting-grade: it defaults to a manual USD->PKR rate of) Tj
+-42 -61 Td
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 7469 >>
+stream
+BT
+/F1 8.5 Tf
+42 800 Td
+(278; currencies and totals are partly embedded inside JSON records; no audit trail, invoice, tax,) Tj
+-42 -800 Td
+/F1 8.5 Tf
+42 789 Td
+(reconciliation, approval flow, or immutable ledger exists.) Tj
+-42 -789 Td
+/F1 8.5 Tf
+42 778 Td
+(- There is no formal API specification, versioning, rate limiting, request validation library, audit log,) Tj
+-42 -778 Td
+/F1 8.5 Tf
+42 767 Td
+(monitoring, backups policy, or automated deployment.) Tj
+-42 -767 Td
+/F1 8.5 Tf
+42 756 Td
+(- Data records are JSON documents. This is flexible while the CRM changes, but makes joins, reporting,) Tj
+-42 -756 Td
+/F1 8.5 Tf
+42 745 Td
+(database constraints, and a customer portal harder than with normalized tables.) Tj
+-42 -745 Td
+/F1 8.5 Tf
+42 734 Td
+(- Data can become duplicated: assignment/project data is copied into client projects, and delivered paths) Tj
+-42 -734 Td
+/F1 8.5 Tf
+42 723 Td
+(are copied into both assignments and projects. The application attempts to keep them in sync, but the) Tj
+-42 -723 Td
+/F1 8.5 Tf
+42 712 Td
+(database cannot enforce it.) Tj
+-42 -712 Td
+/F1 8.5 Tf
+42 701 Td
+(- Deleting a lead/client/designer removes CRM records, but R2 object deletion is not implemented.) Tj
+-42 -701 Td
+/F1 8.5 Tf
+42 690 Td
+(Uploaded file objects can become orphaned.) Tj
+-42 -690 Td
+/F1 8.5 Tf
+42 679 Td
+(- readme demo credentials and "deferred" statements are outdated. The fallback in-memory demo credentials) Tj
+-42 -679 Td
+/F1 8.5 Tf
+42 668 Td
+(are still compiled into the backend and should be removed or guarded before a public production) Tj
+-42 -668 Td
+/F1 8.5 Tf
+42 657 Td
+(deployment.) Tj
+-42 -657 Td
+/F1 8 Tf
+42 646 Td
+() Tj
+-42 -646 Td
+/F1 11 Tf
+42 642 Td
+(Planned only / not implemented) Tj
+-42 -642 Td
+/F1 8 Tf
+42 635 Td
+() Tj
+-42 -635 Td
+/F1 8.5 Tf
+42 631 Td
+(- Customer-facing portal with customer authentication, customer-scoped orders/projects/files/invoices, or) Tj
+-42 -631 Td
+/F1 8.5 Tf
+42 620 Td
+(self-service database access.) Tj
+-42 -620 Td
+/F1 8.5 Tf
+42 609 Td
+(- Zoom Phone click-to-dial and automatic Stage 1 call logging. No Zoom SDK, API client, routes, webhooks,) Tj
+-42 -609 Td
+/F1 8.5 Tf
+42 598 Td
+(tables, or environment variables exist in this repository.) Tj
+-42 -598 Td
+/F1 8.5 Tf
+42 587 Td
+(- Automatic call qualification rule requested by the business \(connected for at least one minute,) Tj
+-42 -587 Td
+/F1 8.5 Tf
+42 576 Td
+(excluding voicemail\). Current manual call logging accepts any duration above zero; caller reporting) Tj
+-42 -576 Td
+/F1 8.5 Tf
+42 565 Td
+(counts calls at 30 seconds or more.) Tj
+-42 -565 Td
+/F1 8.5 Tf
+42 554 Td
+(- CRM email sending for arbitrary emails/Stage 3. Current Gmail code only sends designer assignment) Tj
+-42 -554 Td
+/F1 8.5 Tf
+42 543 Td
+(emails; Stage 3 loads matching Gmail messages and saves a selected email log.) Tj
+-42 -543 Td
+/F1 8.5 Tf
+42 532 Td
+(- Email attachment ingestion into the CRM. Gmail reader returns message subject/body metadata, not) Tj
+-42 -532 Td
+/F1 8.5 Tf
+42 521 Td
+(attachments.) Tj
+-42 -521 Td
+/F1 8.5 Tf
+42 510 Td
+(- True real-time notifications/websockets; current UI polls notifications every 10 seconds.) Tj
+-42 -510 Td
+/F1 8.5 Tf
+42 499 Td
+(- Payment gateway, live FX rates, custom pipeline stages, audit timeline, global search across every) Tj
+-42 -499 Td
+/F1 8.5 Tf
+42 488 Td
+(entity, external customer API, Zoom integration, or sync jobs.) Tj
+-42 -488 Td
+/F1 8 Tf
+42 477 Td
+() Tj
+-42 -477 Td
+/F1 14 Tf
+42 473 Td
+(3. Stack and runtime) Tj
+-42 -473 Td
+/F1 8 Tf
+42 460 Td
+() Tj
+-42 -460 Td
+/F1 8.5 Tf
+42 456 Td
+(| Layer | Implemented technology |) Tj
+-42 -456 Td
+/F1 8.5 Tf
+42 445 Td
+(| --- | --- |) Tj
+-42 -445 Td
+/F1 8.5 Tf
+42 434 Td
+(| Frontend | React + TypeScript + Vite; Lucide icons; CSS files. |) Tj
+-42 -434 Td
+/F1 8.5 Tf
+42 423 Td
+(| Backend | Node.js + TypeScript + Fastify. |) Tj
+-42 -423 Td
+/F1 8.5 Tf
+42 412 Td
+(| Data access | Hand-written REST calls from backend to Supabase PostgREST/Auth; repository pattern. No) Tj
+-42 -412 Td
+/F1 8.5 Tf
+42 401 Td
+(Supabase JavaScript SDK. |) Tj
+-42 -401 Td
+/F1 8.5 Tf
+42 390 Td
+(| Authentication | Supabase Auth email/password and invitations; backend-created CRM session token. |) Tj
+-42 -390 Td
+/F1 8.5 Tf
+42 379 Td
+(| Object storage | Cloudflare R2, accessed with AWS S3 SDK-compatible API. |) Tj
+-42 -379 Td
+/F1 8.5 Tf
+42 368 Td
+(| Email | Google OAuth 2.0 and Gmail REST API using native fetch. |) Tj
+-42 -368 Td
+/F1 8.5 Tf
+42 357 Td
+(| Browser alerts | Web Push \(web-push\) and a service worker at frontend/public/push-sw.js. |) Tj
+-42 -357 Td
+/F1 8.5 Tf
+42 346 Td
+(| Local development | Vite at port 5173, proxying /api to Fastify at port 3001. |) Tj
+-42 -346 Td
+/F1 8.5 Tf
+42 335 Td
+(| Hosting | Unverified / not configured in repository. The source can run locally. It has no checked-in) Tj
+-42 -335 Td
+/F1 8.5 Tf
+42 324 Td
+(production host configuration. |) Tj
+-42 -324 Td
+/F1 8 Tf
+42 313 Td
+() Tj
+-42 -313 Td
+/F1 8.5 Tf
+42 309 Td
+(Required secret configuration is kept outside source in .env: SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY,) Tj
+-42 -309 Td
+/F1 8.5 Tf
+42 298 Td
+(SUPABASE_SERVICE_ROLE_KEY, R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME,) Tj
+-42 -298 Td
+/F1 8.5 Tf
+42 287 Td
+(R2_ENDPOINT, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_GMAIL_REDIRECT_URI, PUSH_VAPID_PUBLIC_KEY,) Tj
+-42 -287 Td
+/F1 8.5 Tf
+42 276 Td
+(PUSH_VAPID_PRIVATE_KEY, and PUSH_CONTACT_EMAIL. The deployed frontend additionally expects VITE_API_URL) Tj
+-42 -276 Td
+/F1 8.5 Tf
+42 265 Td
+(when it is not served behind the local /api proxy.) Tj
+-42 -265 Td
+/F1 8 Tf
+42 254 Td
+() Tj
+-42 -254 Td
+/F1 14 Tf
+42 250 Td
+(4. Cloudflare and Supabase) Tj
+-42 -250 Td
+/F1 8 Tf
+42 237 Td
+() Tj
+-42 -237 Td
+/F1 11 Tf
+42 233 Td
+(What lives where) Tj
+-42 -233 Td
+/F1 8 Tf
+42 226 Td
+() Tj
+-42 -226 Td
+/F1 8.5 Tf
+42 222 Td
+(| Service | What the code uses it for |) Tj
+-42 -222 Td
+/F1 8.5 Tf
+42 211 Td
+(| --- | --- |) Tj
+-42 -211 Td
+/F1 8.5 Tf
+42 200 Td
+(| Supabase | PostgreSQL tables crm_records and crm_profiles; Supabase Auth users; role profiles; all CRM) Tj
+-42 -200 Td
+/F1 8.5 Tf
+42 189 Td
+(JSON records including leads, clients, assignments, expenses, notifications, sessions, push) Tj
+-42 -189 Td
+/F1 8.5 Tf
+42 178 Td
+(subscriptions, and encrypted Gmail connections. |) Tj
+-42 -178 Td
+/F1 8.5 Tf
+42 167 Td
+(| Cloudflare R2 | Binary files only: client/trial attachments and designer-delivered files. Objects are) Tj
+-42 -167 Td
+/F1 8.5 Tf
+42 156 Td
+(saved under crm-uploads/<UUID>. |) Tj
+-42 -156 Td
+/F1 8.5 Tf
+42 145 Td
+(| Cloudflare Pages / Workers / D1 / KV | Not used in the repository. No source/configuration demonstrates) Tj
+-42 -145 Td
+/F1 8.5 Tf
+42 134 Td
+(that any of these Cloudflare products are deployed. |) Tj
+-42 -134 Td
+/F1 8 Tf
+42 123 Td
+() Tj
+-42 -123 Td
+/F1 11 Tf
+42 119 Td
+(Why both?) Tj
+-42 -119 Td
+/F1 8 Tf
+42 112 Td
+() Tj
+-42 -112 Td
+/F1 8.5 Tf
+42 108 Td
+(They serve different purposes: Supabase provides relational Postgres and authentication; R2 provides) Tj
+-42 -108 Td
+/F1 8.5 Tf
+42 97 Td
+(cheaper object storage for binary artwork/files. The backend stores a file reference such as) Tj
+-42 -97 Td
+/F1 8.5 Tf
+42 86 Td
+(/files/<UUID>/<encoded name> in a Supabase JSON record, while the bytes are stored in R2 under) Tj
+-42 -86 Td
+/F1 8.5 Tf
+42 75 Td
+(crm-uploads/<UUID>.) Tj
+-42 -75 Td
+/F1 8 Tf
+42 64 Td
+() Tj
+-42 -64 Td
+/F1 8.5 Tf
+42 60 Td
+(This looks like a deliberate practical separation for database/auth versus files. However, there is no) Tj
+-42 -60 Td
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 7456 >>
+stream
+BT
+/F1 8.5 Tf
+42 800 Td
+(architectural decision record, migration history, or infrastructure configuration in the repository, so) Tj
+-42 -800 Td
+/F1 8.5 Tf
+42 789 Td
+(the original decision rationale is unverified.) Tj
+-42 -789 Td
+/F1 8 Tf
+42 778 Td
+() Tj
+-42 -778 Td
+/F1 11 Tf
+42 774 Td
+(How they stay in sync) Tj
+-42 -774 Td
+/F1 8 Tf
+42 767 Td
+() Tj
+-42 -767 Td
+/F1 8.5 Tf
+42 763 Td
+(They do not have database-level synchronization. The Fastify backend is the coordinator:) Tj
+-42 -763 Td
+/F1 8 Tf
+42 752 Td
+() Tj
+-42 -752 Td
+/F1 8.5 Tf
+42 748 Td
+(1. It uploads the bytes to R2.) Tj
+-42 -748 Td
+/F1 8.5 Tf
+42 737 Td
+(2. It saves the generated file path into the relevant JSON record in Supabase.) Tj
+-42 -737 Td
+/F1 8.5 Tf
+42 726 Td
+(3. On download, it authorizes the current CRM user using Supabase-backed records, then fetches the bytes) Tj
+-42 -726 Td
+/F1 8.5 Tf
+42 715 Td
+(from R2.) Tj
+-42 -715 Td
+/F1 8 Tf
+42 704 Td
+() Tj
+-42 -704 Td
+/F1 8.5 Tf
+42 700 Td
+(This has two important consequences:) Tj
+-42 -700 Td
+/F1 8 Tf
+42 689 Td
+() Tj
+-42 -689 Td
+/F1 8.5 Tf
+42 685 Td
+(- If R2 upload succeeds but the Supabase write fails, an orphan R2 object is possible.) Tj
+-42 -685 Td
+/F1 8.5 Tf
+42 674 Td
+(- Deleting CRM records does not delete R2 objects. Cleanup/lifecycle rules are not implemented in source.) Tj
+-42 -674 Td
+/F1 8 Tf
+42 663 Td
+() Tj
+-42 -663 Td
+/F1 14 Tf
+42 659 Td
+(5. Database schema and migrations) Tj
+-42 -659 Td
+/F1 8 Tf
+42 646 Td
+() Tj
+-42 -646 Td
+/F1 8.5 Tf
+42 642 Td
+(There is no migrations directory or migration runner. The only database definition is) Tj
+-42 -642 Td
+/F1 8.5 Tf
+42 631 Td
+(supabase/schema.sql; it must be pasted/run manually in Supabase SQL Editor. Below is the complete SQL) Tj
+-42 -631 Td
+/F1 8.5 Tf
+42 620 Td
+(exactly as checked in:) Tj
+-42 -620 Td
+/F1 8 Tf
+42 609 Td
+() Tj
+-42 -609 Td
+/F1 7 Tf
+42 605 Td
+(-- Run this once in Supabase: SQL Editor -> New query -> paste -> Run.) Tj
+-42 -605 Td
+/F1 7 Tf
+42 596.5 Td
+(-- CRM objects are stored as version-friendly JSON records while the CRM is evolving.) Tj
+-42 -596.5 Td
+/F1 7 Tf
+42 588 Td
+(create table if not exists public.crm_records \() Tj
+-42 -588 Td
+/F1 7 Tf
+42 579.5 Td
+(collection text not null,) Tj
+-42 -579.5 Td
+/F1 7 Tf
+42 571 Td
+(id text not null,) Tj
+-42 -571 Td
+/F1 7 Tf
+42 562.5 Td
+(data jsonb not null,) Tj
+-42 -562.5 Td
+/F1 7 Tf
+42 554 Td
+(created_at timestamptz not null default timezone\('utc', now\(\)\),) Tj
+-42 -554 Td
+/F1 7 Tf
+42 545.5 Td
+(updated_at timestamptz not null default timezone\('utc', now\(\)\),) Tj
+-42 -545.5 Td
+/F1 7 Tf
+42 537 Td
+(primary key \(collection, id\)) Tj
+-42 -537 Td
+/F1 7 Tf
+42 528.5 Td
+(\);) Tj
+-42 -528.5 Td
+/F1 8 Tf
+42 520 Td
+() Tj
+-42 -520 Td
+/F1 7 Tf
+42 516 Td
+(create index if not exists crm_records_collection_updated_at_idx) Tj
+-42 -516 Td
+/F1 7 Tf
+42 507.5 Td
+(on public.crm_records \(collection, updated_at\);) Tj
+-42 -507.5 Td
+/F1 8 Tf
+42 499 Td
+() Tj
+-42 -499 Td
+/F1 7 Tf
+42 495 Td
+(alter table public.crm_records enable row level security;) Tj
+-42 -495 Td
+/F1 8 Tf
+42 486.5 Td
+() Tj
+-42 -486.5 Td
+/F1 7 Tf
+42 482.5 Td
+(-- Browser users get no direct table access. The protected CRM backend uses the secret key.) Tj
+-42 -482.5 Td
+/F1 7 Tf
+42 474 Td
+(revoke all on public.crm_records from anon, authenticated;) Tj
+-42 -474 Td
+/F1 7 Tf
+42 465.5 Td
+(grant select, insert, update, delete on public.crm_records to service_role;) Tj
+-42 -465.5 Td
+/F1 8 Tf
+42 457 Td
+() Tj
+-42 -457 Td
+/F1 7 Tf
+42 453 Td
+(-- Real CRM login roles. Each row is linked to exactly one Supabase Auth user.) Tj
+-42 -453 Td
+/F1 7 Tf
+42 444.5 Td
+(create table if not exists public.crm_profiles \() Tj
+-42 -444.5 Td
+/F1 7 Tf
+42 436 Td
+(id uuid primary key references auth.users\(id\) on delete cascade,) Tj
+-42 -436 Td
+/F1 7 Tf
+42 427.5 Td
+(full_name text not null,) Tj
+-42 -427.5 Td
+/F1 7 Tf
+42 419 Td
+(role text not null check \(role in \('Admin', 'Caller', 'Designer'\)\),) Tj
+-42 -419 Td
+/F1 7 Tf
+42 410.5 Td
+(designer_id text,) Tj
+-42 -410.5 Td
+/F1 7 Tf
+42 402 Td
+(created_at timestamptz not null default timezone\('utc', now\(\)\)) Tj
+-42 -402 Td
+/F1 7 Tf
+42 393.5 Td
+(\);) Tj
+-42 -393.5 Td
+/F1 8 Tf
+42 385 Td
+() Tj
+-42 -385 Td
+/F1 7 Tf
+42 381 Td
+(alter table public.crm_profiles enable row level security;) Tj
+-42 -381 Td
+/F1 7 Tf
+42 372.5 Td
+(revoke all on public.crm_profiles from anon, authenticated;) Tj
+-42 -372.5 Td
+/F1 7 Tf
+42 364 Td
+(grant select, insert, update, delete on public.crm_profiles to service_role;) Tj
+-42 -364 Td
+/F1 8 Tf
+42 355.5 Td
+() Tj
+-42 -355.5 Td
+/F1 11 Tf
+42 351.5 Td
+(Tables, columns, and relationships) Tj
+-42 -351.5 Td
+/F1 8 Tf
+42 344.5 Td
+() Tj
+-42 -344.5 Td
+/F1 8.5 Tf
+42 340.5 Td
+(#### public.crm_records) Tj
+-42 -340.5 Td
+/F1 8 Tf
+42 329.5 Td
+() Tj
+-42 -329.5 Td
+/F1 8.5 Tf
+42 325.5 Td
+(| Column | Type | Meaning |) Tj
+-42 -325.5 Td
+/F1 8.5 Tf
+42 314.5 Td
+(| --- | --- | --- |) Tj
+-42 -314.5 Td
+/F1 8.5 Tf
+42 303.5 Td
+(| collection | text, not null | Logical collection name. Current code uses: leads, clients, assignments,) Tj
+-42 -303.5 Td
+/F1 8.5 Tf
+42 292.5 Td
+(designers, expenses, users, notifications, sessions, push_subscriptions, and gmail_connections. |) Tj
+-42 -292.5 Td
+/F1 8.5 Tf
+42 281.5 Td
+(| id | text, not null | Object ID within the collection. Together with collection this is the primary) Tj
+-42 -281.5 Td
+/F1 8.5 Tf
+42 270.5 Td
+(key. |) Tj
+-42 -270.5 Td
+/F1 8.5 Tf
+42 259.5 Td
+(| data | jsonb, not null | Entire application object. This is where all business fields live. |) Tj
+-42 -259.5 Td
+/F1 8.5 Tf
+42 248.5 Td
+(| created_at | timestamptz, not null | Defaults to UTC now. |) Tj
+-42 -248.5 Td
+/F1 8.5 Tf
+42 237.5 Td
+(| updated_at | timestamptz, not null | Defaults to UTC now, but there is no trigger in the migration to) Tj
+-42 -237.5 Td
+/F1 8.5 Tf
+42 226.5 Td
+(update it automatically on PATCH. |) Tj
+-42 -226.5 Td
+/F1 8 Tf
+42 215.5 Td
+() Tj
+-42 -215.5 Td
+/F1 8.5 Tf
+42 211.5 Td
+(Relationship enforcement: none inside this table. Links such as Lead -> Client, Client -> Project,) Tj
+-42 -211.5 Td
+/F1 8.5 Tf
+42 200.5 Td
+(Assignment -> Designer, and files are IDs/names/paths inside JSON, enforced by application code only.) Tj
+-42 -200.5 Td
+/F1 8 Tf
+42 189.5 Td
+() Tj
+-42 -189.5 Td
+/F1 8.5 Tf
+42 185.5 Td
+(#### public.crm_profiles) Tj
+-42 -185.5 Td
+/F1 8 Tf
+42 174.5 Td
+() Tj
+-42 -174.5 Td
+/F1 8.5 Tf
+42 170.5 Td
+(| Column | Type | Meaning |) Tj
+-42 -170.5 Td
+/F1 8.5 Tf
+42 159.5 Td
+(| --- | --- | --- |) Tj
+-42 -159.5 Td
+/F1 8.5 Tf
+42 148.5 Td
+(| id | uuid, primary key | Required foreign key to auth.users\(id\); cascades on Auth-user deletion. |) Tj
+-42 -148.5 Td
+/F1 8.5 Tf
+42 137.5 Td
+(| full_name | text, not null | Display name used for the CRM role and notifications. |) Tj
+-42 -137.5 Td
+/F1 8.5 Tf
+42 126.5 Td
+(| role | text, not null | Database check constraint: Admin, Caller, or Designer. |) Tj
+-42 -126.5 Td
+/F1 8.5 Tf
+42 115.5 Td
+(| designer_id | text, nullable | Application link to a designers JSON object for a Designer user. No) Tj
+-42 -115.5 Td
+/F1 8.5 Tf
+42 104.5 Td
+(foreign key. |) Tj
+-42 -104.5 Td
+/F1 8.5 Tf
+42 93.5 Td
+(| created_at | timestamptz, not null | Defaults to UTC now. |) Tj
+-42 -93.5 Td
+/F1 8 Tf
+42 82.5 Td
+() Tj
+-42 -82.5 Td
+/F1 8.5 Tf
+42 78.5 Td
+(#### JSON record shapes used by application code) Tj
+-42 -78.5 Td
+/F1 8 Tf
+42 67.5 Td
+() Tj
+-42 -67.5 Td
+/F1 8.5 Tf
+42 63.5 Td
+(The following are not SQL tables; they are TypeScript object shapes stored in crm_records.data.) Tj
+-42 -63.5 Td
+/F1 8 Tf
+42 52.5 Td
+() Tj
+-42 -52.5 Td
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 7396 >>
+stream
+BT
+/F1 8.5 Tf
+42 800 Td
+(- Lead: company/contact/phone/address details, lead status, owner/capturedBy/assignment metadata, calls,) Tj
+-42 -800 Td
+/F1 8.5 Tf
+42 789 Td
+(follow-ups, and optional nested opportunity.) Tj
+-42 -789 Td
+/F1 8.5 Tf
+42 778 Td
+(- Opportunity \(inside Lead\): POCs, emailSent, free-trial details/attachments, and orders.) Tj
+-42 -778 Td
+/F1 8.5 Tf
+42 767 Td
+(- Client: company/contact data, paid/unpaid state, projects array, payments array, totals, and optional) Tj
+-42 -767 Td
+/F1 8.5 Tf
+42 756 Td
+(convertedFrom lead ID.) Tj
+-42 -756 Td
+/F1 8.5 Tf
+42 745 Td
+(- Project \(inside Client\): project name/service/designer/status/client attachment paths/designer) Tj
+-42 -745 Td
+/F1 8.5 Tf
+42 734 Td
+(attachment paths.) Tj
+-42 -734 Td
+/F1 8.5 Tf
+42 723 Td
+(- Assignment: designer and client/project details, payment/paid fields, attached file paths, status,) Tj
+-42 -723 Td
+/F1 8.5 Tf
+42 712 Td
+(deliveries, and delivery note.) Tj
+-42 -712 Td
+/F1 8.5 Tf
+42 701 Td
+(- Designer: name, email, optional address/bank account/phone.) Tj
+-42 -701 Td
+/F1 8.5 Tf
+42 690 Td
+(- Expense: name, amount, date, category, description, currency/original/conversion fields.) Tj
+-42 -690 Td
+/F1 8.5 Tf
+42 679 Td
+(- Notification: recipient name, message, kind, created time, read flag.) Tj
+-42 -679 Td
+/F1 8.5 Tf
+42 668 Td
+(- Session: SHA-256 token hash as id, user identity/role, optional designer ID, expiry. The raw token is) Tj
+-42 -668 Td
+/F1 8.5 Tf
+42 657 Td
+(not stored in Supabase.) Tj
+-42 -657 Td
+/F1 8.5 Tf
+42 646 Td
+(- Push subscription: user ID, browser endpoint and public key material.) Tj
+-42 -646 Td
+/F1 8.5 Tf
+42 635 Td
+(- Gmail connection: user ID/email/connected timestamp plus an encrypted refresh token. Encryption derives) Tj
+-42 -635 Td
+/F1 8.5 Tf
+42 624 Td
+(from SUPABASE_SERVICE_ROLE_KEY; rotating that key without a migration would make existing stored Gmail) Tj
+-42 -624 Td
+/F1 8.5 Tf
+42 613 Td
+(tokens unreadable.) Tj
+-42 -613 Td
+/F1 8 Tf
+42 602 Td
+() Tj
+-42 -602 Td
+/F1 11 Tf
+42 598 Td
+(Row-level security \(RLS\)) Tj
+-42 -598 Td
+/F1 8 Tf
+42 591 Td
+() Tj
+-42 -591 Td
+/F1 8.5 Tf
+42 587 Td
+(RLS is enabled on both application tables. There are no per-user USING/WITH CHECK policies. Instead,) Tj
+-42 -587 Td
+/F1 8.5 Tf
+42 576 Td
+(direct access is revoked from anon and authenticated; only Supabase service_role is granted CRUD rights.) Tj
+-42 -576 Td
+/F1 8.5 Tf
+42 565 Td
+(Therefore all authorization is enforced in the backend application. This is safe only while the) Tj
+-42 -565 Td
+/F1 8.5 Tf
+42 554 Td
+(service-role key remains private and the backend authorization stays correct.) Tj
+-42 -554 Td
+/F1 8 Tf
+42 543 Td
+() Tj
+-42 -543 Td
+/F1 14 Tf
+42 539 Td
+(6. Authentication and authorization) Tj
+-42 -539 Td
+/F1 8 Tf
+42 526 Td
+() Tj
+-42 -526 Td
+/F1 8.5 Tf
+42 522 Td
+(- Sign-in provider: Supabase Auth email/password. No Google/Microsoft/social sign-in provider is) Tj
+-42 -522 Td
+/F1 8.5 Tf
+42 511 Td
+(implemented for CRM login.) Tj
+-42 -511 Td
+/F1 8.5 Tf
+42 500 Td
+(- Account creation: Admin can invite a user from CRM, which calls Supabase Auth's invite endpoint; the) Tj
+-42 -500 Td
+/F1 8.5 Tf
+42 489 Td
+(recipient sets their own password through the invitation/recovery token screen.) Tj
+-42 -489 Td
+/F1 8.5 Tf
+42 478 Td
+(- Roles: stored in crm_profiles, then loaded at login. The backend rejects a valid Supabase Auth login if) Tj
+-42 -478 Td
+/F1 8.5 Tf
+42 467 Td
+(no CRM profile exists.) Tj
+-42 -467 Td
+/F1 8.5 Tf
+42 456 Td
+(- Sessions: after login, Fastify creates its own random session token. The browser sends it as) Tj
+-42 -456 Td
+/F1 8.5 Tf
+42 445 Td
+(Authorization: Bearer <token>. The backend stores only SHA-256 token hashes in crm_records for 14 days,) Tj
+-42 -445 Td
+/F1 8.5 Tf
+42 434 Td
+(restores them at startup, and removes expired entries.) Tj
+-42 -434 Td
+/F1 8.5 Tf
+42 423 Td
+(- Role enforcement: routes call a central allow\(session, roles\) helper, plus record ownership checks for) Tj
+-42 -423 Td
+/F1 8.5 Tf
+42 412 Td
+(callers/designers. The frontend hides navigation items, but security is meant to come from backend) Tj
+-42 -412 Td
+/F1 8.5 Tf
+42 401 Td
+(checks.) Tj
+-42 -401 Td
+/F1 8.5 Tf
+42 390 Td
+(- CORS: configured as origin: true, meaning the backend reflects/permits any origin. This is convenient) Tj
+-42 -390 Td
+/F1 8.5 Tf
+42 379 Td
+(for development but should be narrowed to the real CRM site before production.) Tj
+-42 -379 Td
+/F1 8 Tf
+42 368 Td
+() Tj
+-42 -368 Td
+/F1 14 Tf
+42 364 Td
+(7. File storage and access control) Tj
+-42 -364 Td
+/F1 8 Tf
+42 351 Td
+() Tj
+-42 -351 Td
+/F1 8.5 Tf
+42 347 Td
+(Uploads are accepted by the backend, not by the browser directly to R2. Accepted types are .ai, .dst,) Tj
+-42 -347 Td
+/F1 8.5 Tf
+42 336 Td
+(.emb, .eps, .jpeg, .jpg, .pdf, .pes, .png, .svg, .webp, and .zip; maximum size is 25 MB.) Tj
+-42 -336 Td
+/F1 8 Tf
+42 325 Td
+() Tj
+-42 -325 Td
+/F1 8.5 Tf
+42 321 Td
+(Files are saved in R2 as crm-uploads/<UUID>. Supabase only stores a CRM route/path reference, such as) Tj
+-42 -321 Td
+/F1 8.5 Tf
+42 310 Td
+(/files/<UUID>/design.png.) Tj
+-42 -310 Td
+/F1 8 Tf
+42 299 Td
+() Tj
+-42 -299 Td
+/F1 8.5 Tf
+42 295 Td
+(Download access is checked before the backend fetches R2 bytes:) Tj
+-42 -295 Td
+/F1 8 Tf
+42 284 Td
+() Tj
+-42 -284 Td
+/F1 8.5 Tf
+42 280 Td
+(- Admin: any CRM-linked file.) Tj
+-42 -280 Td
+/F1 8.5 Tf
+42 269 Td
+(- Caller: trial attachments for leads they own or captured.) Tj
+-42 -269 Td
+/F1 8.5 Tf
+42 258 Td
+(- Designer: files on assignments where designerEmail matches their session email.) Tj
+-42 -258 Td
+/F1 8 Tf
+42 247 Td
+() Tj
+-42 -247 Td
+/F1 8.5 Tf
+42 243 Td
+(The frontend does not receive public R2 URLs; it downloads through the authorized backend endpoint. R2) Tj
+-42 -243 Td
+/F1 8.5 Tf
+42 232 Td
+(object deletion/lifecycle cleanup is absent.) Tj
+-42 -232 Td
+/F1 8 Tf
+42 221 Td
+() Tj
+-42 -221 Td
+/F1 14 Tf
+42 217 Td
+(8. API surface) Tj
+-42 -217 Td
+/F1 8 Tf
+42 204 Td
+() Tj
+-42 -204 Td
+/F1 8.5 Tf
+42 200 Td
+(The project has an internal JSON HTTP API under /api; it is not documented, versioned, rate-limited, or) Tj
+-42 -200 Td
+/F1 8.5 Tf
+42 189 Td
+(intended as a public customer/developer API. All endpoints except /health and the Google OAuth callback) Tj
+-42 -189 Td
+/F1 8.5 Tf
+42 178 Td
+(require a backend CRM session.) Tj
+-42 -178 Td
+/F1 8 Tf
+42 167 Td
+() Tj
+-42 -167 Td
+/F1 8.5 Tf
+42 163 Td
+(Major groups:) Tj
+-42 -163 Td
+/F1 8 Tf
+42 152 Td
+() Tj
+-42 -152 Td
+/F1 8.5 Tf
+42 148 Td
+(- /api/auth/* - login, logout, invite password completion.) Tj
+-42 -148 Td
+/F1 8.5 Tf
+42 137 Td
+(- /api/gmail/* - status, OAuth connect/callback, matching POC emails.) Tj
+-42 -137 Td
+/F1 8.5 Tf
+42 126 Td
+(- /api/notifications/* and /api/push/* - in-app and browser notification support.) Tj
+-42 -126 Td
+/F1 8.5 Tf
+42 115 Td
+(- /api/files - upload and authorized download.) Tj
+-42 -115 Td
+/F1 8.5 Tf
+42 104 Td
+(- /api/leads/*, /api/opportunities - lead/opportunity/call/order/follow-up work.) Tj
+-42 -104 Td
+/F1 8.5 Tf
+42 93 Td
+(- /api/clients/*, /api/designers/*, /api/assignments/* - operational client/project/designer work.) Tj
+-42 -93 Td
+/F1 8.5 Tf
+42 82 Td
+(- /api/finance/summary, /api/reports/*, /api/expenses - finance/reporting.) Tj
+-42 -82 Td
+/F1 8.5 Tf
+42 71 Td
+(- /api/users/* - Admin account/role/name management.) Tj
+-42 -71 Td
+/F1 8 Tf
+42 60 Td
+() Tj
+-42 -60 Td
+/F1 8.5 Tf
+42 56 Td
+(For a future client portal, do not call Supabase tables directly and do not expose) Tj
+-42 -56 Td
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 7857 >>
+stream
+BT
+/F1 8.5 Tf
+42 800 Td
+(SUPABASE_SERVICE_ROLE_KEY in that portal. Create a small, documented, versioned portal API or a dedicated) Tj
+-42 -800 Td
+/F1 8.5 Tf
+42 789 Td
+(backend-for-frontend layer instead.) Tj
+-42 -789 Td
+/F1 8 Tf
+42 778 Td
+() Tj
+-42 -778 Td
+/F1 14 Tf
+42 774 Td
+(9. Known problems and warnings for a new developer) Tj
+-42 -774 Td
+/F1 8 Tf
+42 761 Td
+() Tj
+-42 -761 Td
+/F1 8.5 Tf
+42 757 Td
+(1. No production deployment is tracked. Do not assume Render/Cloudflare hosting exists because it was) Tj
+-42 -757 Td
+/F1 8.5 Tf
+42 746 Td
+(discussed elsewhere. Verify public URLs, HTTPS, DNS, Google OAuth redirect URI, environment variables, R2) Tj
+-42 -746 Td
+/F1 8.5 Tf
+42 735 Td
+(bucket policy, and push keys before launch.) Tj
+-42 -735 Td
+/F1 8.5 Tf
+42 724 Td
+(2. One generic JSON table is a temporary MVP design. It has no foreign keys/unique constraints for) Tj
+-42 -724 Td
+/F1 8.5 Tf
+42 713 Td
+(business entities, no indexed fields inside JSON, and weak data integrity for a growing business.) Tj
+-42 -713 Td
+/F1 8.5 Tf
+42 702 Td
+(3. RLS delegates all security to one backend. Never give the frontend the service-role key. Add API tests) Tj
+-42 -702 Td
+/F1 8.5 Tf
+42 691 Td
+(for every authorization boundary before opening a customer portal.) Tj
+-42 -691 Td
+/F1 8.5 Tf
+42 680 Td
+(4. updated_at does not automatically update. The SQL declares it but has no trigger, while the backend) Tj
+-42 -680 Td
+/F1 8.5 Tf
+42 669 Td
+(PATCH updates data only. Ordering by it may be stale.) Tj
+-42 -669 Td
+/F1 8.5 Tf
+42 658 Td
+(5. Gmail OAuth is process-state dependent during connection. Restarting/redeploying during OAuth can lose) Tj
+-42 -658 Td
+/F1 8.5 Tf
+42 647 Td
+(the state value. Google OAuth consent/testing/production verification status is not shown in this) Tj
+-42 -647 Td
+/F1 8.5 Tf
+42 636 Td
+(repository.) Tj
+-42 -636 Td
+/F1 8.5 Tf
+42 625 Td
+(6. Gmail refresh-token encryption is coupled to the Supabase service role key. Key rotation needs a) Tj
+-42 -625 Td
+/F1 8.5 Tf
+42 614 Td
+(planned re-encryption/reconnect procedure.) Tj
+-42 -614 Td
+/F1 8.5 Tf
+42 603 Td
+(7. No durable background jobs. Gmail sends, push sends, notification persistence, and future webhooks) Tj
+-42 -603 Td
+/F1 8.5 Tf
+42 592 Td
+(have no retry/dead-letter queue.) Tj
+-42 -592 Td
+/F1 8.5 Tf
+42 581 Td
+(8. No R2 cleanup. Deletes can leak uploaded files/storage cost and potentially leave sensitive files in) Tj
+-42 -581 Td
+/F1 8.5 Tf
+42 570 Td
+(storage.) Tj
+-42 -570 Td
+/F1 8.5 Tf
+42 559 Td
+(9. No audit log or soft-delete. Admin deletions are destructive at the CRM record level; there is no "who) Tj
+-42 -559 Td
+/F1 8.5 Tf
+42 548 Td
+(changed what" history.) Tj
+-42 -548 Td
+/F1 8.5 Tf
+42 537 Td
+(10. No schema validation at the HTTP boundary. Requests are mostly TypeScript casts at runtime. A) Tj
+-42 -537 Td
+/F1 8.5 Tf
+42 526 Td
+(malformed client/API request could create inconsistent JSON.) Tj
+-42 -526 Td
+/F1 8.5 Tf
+42 515 Td
+(11. Hard-coded fallback demo accounts exist in code. They are used only if Supabase Auth is not) Tj
+-42 -515 Td
+/F1 8.5 Tf
+42 504 Td
+(configured, but should be disabled for any public production build.) Tj
+-42 -504 Td
+/F1 8.5 Tf
+42 493 Td
+(12. Role/name matching is brittle in places. Some notification/lead ownership logic uses display names or) Tj
+-42 -493 Td
+/F1 8.5 Tf
+42 482 Td
+(first names instead of stable user IDs; duplicate/renamed names can cause incorrect targeting.) Tj
+-42 -482 Td
+/F1 8.5 Tf
+42 471 Td
+(13. No tests cover integrations or authorization end-to-end. Existing tests are backend unit-level; run) Tj
+-42 -471 Td
+/F1 8.5 Tf
+42 460 Td
+(an end-to-end test suite before launch.) Tj
+-42 -460 Td
+/F1 8 Tf
+42 449 Td
+() Tj
+-42 -449 Td
+/F1 14 Tf
+42 445 Td
+(10. Customer portal integration recommendation) Tj
+-42 -445 Td
+/F1 8 Tf
+42 432 Td
+() Tj
+-42 -432 Td
+/F1 11 Tf
+42 428 Td
+(Business goal) Tj
+-42 -428 Td
+/F1 8 Tf
+42 421 Td
+() Tj
+-42 -421 Td
+/F1 8.5 Tf
+42 417 Td
+(The separate customer portal should let each customer see only their own company profile,) Tj
+-42 -417 Td
+/F1 8.5 Tf
+42 406 Td
+(orders/projects, approved files/deliveries, invoices/payments, and perhaps submit a new order or artwork.) Tj
+-42 -406 Td
+/F1 8.5 Tf
+42 395 Td
+(It must never expose internal leads, caller notes, designer bank details, other customers, or the) Tj
+-42 -395 Td
+/F1 8.5 Tf
+42 384 Td
+(Supabase service-role key.) Tj
+-42 -384 Td
+/F1 8 Tf
+42 373 Td
+() Tj
+-42 -373 Td
+/F1 11 Tf
+42 369 Td
+(Honest recommendation: normalize the database first, then use an API) Tj
+-42 -369 Td
+/F1 8 Tf
+42 362 Td
+() Tj
+-42 -362 Td
+/F1 8.5 Tf
+42 358 Td
+(Do not connect the portal directly to the current crm_records JSON table. Direct shared-table access) Tj
+-42 -358 Td
+/F1 8.5 Tf
+42 347 Td
+(would force portal code to understand internal CRM document shapes and makes customer-scoped RLS) Tj
+-42 -347 Td
+/F1 8.5 Tf
+42 336 Td
+(difficult. It also risks exposing all CRM data when a policy is wrong.) Tj
+-42 -336 Td
+/F1 8 Tf
+42 325 Td
+() Tj
+-42 -325 Td
+/F1 8.5 Tf
+42 321 Td
+(Recommended design:) Tj
+-42 -321 Td
+/F1 8 Tf
+42 310 Td
+() Tj
+-42 -310 Td
+/F1 8.5 Tf
+42 306 Td
+(1. Keep Supabase as the shared database and Auth provider.) Tj
+-42 -306 Td
+/F1 8.5 Tf
+42 295 Td
+(2. Add normalized portal-ready tables: organizations, customer_users, clients, projects, project_files,) Tj
+-42 -295 Td
+/F1 8.5 Tf
+42 284 Td
+(orders, invoices, payments, and optionally portal_events/audit_events.) Tj
+-42 -284 Td
+/F1 8.5 Tf
+42 273 Td
+(3. Give every client and project stable UUIDs. Link each portal user to exactly one organization/client) Tj
+-42 -273 Td
+/F1 8.5 Tf
+42 262 Td
+(\(or a controlled many-to-many access table\).) Tj
+-42 -262 Td
+/F1 8.5 Tf
+42 251 Td
+(4. Add proper RLS policies so a customer can only read/write rows belonging to their organization. Keep) Tj
+-42 -251 Td
+/F1 8.5 Tf
+42 240 Td
+(Admin/Caller/Designer internal roles separate from customer roles.) Tj
+-42 -240 Td
+/F1 8.5 Tf
+42 229 Td
+(5. Put business actions behind a documented backend API \(for example /api/v1/portal/*\) or Supabase Edge) Tj
+-42 -229 Td
+/F1 8.5 Tf
+42 218 Td
+(Functions. Use signed, short-lived file downloads rather than public R2 URLs.) Tj
+-42 -218 Td
+/F1 8.5 Tf
+42 207 Td
+(6. Migrate existing CRM JSON records to the normalized tables through a tested, idempotent migration.) Tj
+-42 -207 Td
+/F1 8.5 Tf
+42 196 Td
+(Until migration is complete, treat the CRM backend as the only writer to existing records.) Tj
+-42 -196 Td
+/F1 8 Tf
+42 185 Td
+() Tj
+-42 -185 Td
+/F1 11 Tf
+42 181 Td
+(Short-term bridge \(if portal work must start now\)) Tj
+-42 -181 Td
+/F1 8 Tf
+42 174 Td
+() Tj
+-42 -174 Td
+/F1 8.5 Tf
+42 170 Td
+(Build a separate portal API against the existing CRM backend. Add narrowly scoped read endpoints such as) Tj
+-42 -170 Td
+/F1 8.5 Tf
+42 159 Td
+(GET /api/v1/portal/me/projects and GET /api/v1/portal/projects/:id/files, backed by an explicit) Tj
+-42 -159 Td
+/F1 8.5 Tf
+42 148 Td
+(customer-user-to-client mapping. Do not expose generic /api/clients or /api/files to portal users. This) Tj
+-42 -148 Td
+/F1 8.5 Tf
+42 137 Td
+(bridge is safer than direct table access, but it is still temporary because the underlying JSON model) Tj
+-42 -137 Td
+/F1 8.5 Tf
+42 126 Td
+(does not scale cleanly.) Tj
+-42 -126 Td
+/F1 8 Tf
+42 115 Td
+() Tj
+-42 -115 Td
+/F1 11 Tf
+42 111 Td
+(Why not "shared database only"?) Tj
+-42 -111 Td
+/F1 8 Tf
+42 104 Td
+() Tj
+-42 -104 Td
+/F1 8.5 Tf
+42 100 Td
+(Shared Supabase is fine as infrastructure, but the portal needs a different security boundary. The) Tj
+-42 -100 Td
+/F1 8.5 Tf
+42 89 Td
+(internal CRM has broad staff access and uses service-role backend access. The customer portal needs hard) Tj
+-42 -89 Td
+/F1 8.5 Tf
+42 78 Td
+(organization isolation at database and API levels. Normalized tables plus RLS and a portal-specific API) Tj
+-42 -78 Td
+/F1 8.5 Tf
+42 67 Td
+(offer the clearest, safest long-term model.) Tj
+-42 -67 Td
+/F1 8 Tf
+42 56 Td
+() Tj
+-42 -56 Td
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 794 >>
+stream
+BT
+/F1 14 Tf
+42 800 Td
+(Conclusion) Tj
+-42 -800 Td
+/F1 8 Tf
+42 787 Td
+() Tj
+-42 -787 Td
+/F1 8.5 Tf
+42 783 Td
+(The project is a functioning internal CRM MVP with Supabase Auth/data, R2 file storage, Gmail) Tj
+-42 -783 Td
+/F1 8.5 Tf
+42 772 Td
+(integration, and browser notification support in source. It is not yet a production-ready platform or) Tj
+-42 -772 Td
+/F1 8.5 Tf
+42 761 Td
+(customer portal. The highest-value next technical work is: deploy and secure the backend; remove/guard) Tj
+-42 -761 Td
+/F1 8.5 Tf
+42 750 Td
+(demo mode; add observability/backups/audit logging; normalize client/project/order/file data; then build) Tj
+-42 -750 Td
+/F1 8.5 Tf
+42 739 Td
+(the customer portal against a dedicated customer-safe API and RLS model.) Tj
+-42 -739 Td
+/F1 8 Tf
+42 728 Td
+() Tj
+-42 -728 Td
+ET
+endstream
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000148 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000008312 00000 n 
+0000008438 00000 n 
+0000015959 00000 n 
+0000016085 00000 n 
+0000023593 00000 n 
+0000023721 00000 n 
+0000031170 00000 n 
+0000031298 00000 n 
+0000039208 00000 n 
+0000039336 00000 n 
+trailer
+<< /Size 16 /Root 1 0 R >>
+startxref
+40182
+%%EOF

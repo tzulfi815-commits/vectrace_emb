@@ -1,0 +1,25 @@
+[build]
+  command = "npm ci && npm run build --workspaces"
+  publish = "frontend/dist"
+  functions = "backend/netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["fastify", "@fastify/cors", "serverless-http", "web-push", "@aws-sdk/client-s3"]
+
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/api/health"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
