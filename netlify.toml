@@ -6,6 +6,7 @@
 [functions]
   node_bundler = "esbuild"
   external_node_modules = ["fastify", "@fastify/cors", "serverless-http", "web-push", "@aws-sdk/client-s3"]
+  included_files = ["backend/dist/**"]
 
 [[redirects]]
   from = "/health"
