@@ -457,9 +457,14 @@ export async function buildServer() {
 }
 const entrypoint = process.argv[1] ?? "";
 if (entrypoint.endsWith("server.ts") || entrypoint.endsWith("server.js")) {
-  const app = await buildServer();
-  // Hosting platforms provide PORT; local development continues on 3001.
-  const port = Number(process.env.PORT ?? 3001);
-  if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error("PORT must be a valid TCP port");
-  await app.listen({ port, host: "0.0.0.0" });
+  void (async () => {
+    const app = await buildServer();
+    // Hosting platforms provide PORT; local development continues on 3001.
+    const port = Number(process.env.PORT ?? 3001);
+    if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error("PORT must be a valid TCP port");
+    await app.listen({ port, host: "0.0.0.0" });
+  })().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
 }
