@@ -72,7 +72,9 @@ export async function buildServer() {
       else await repos.users.create(user);
     }
   };
-  await syncCrmUsersFromAuth();
+  // Do not block a serverless cold start on a full Auth directory sync.
+  // The Users endpoint performs a complete sync before it returns data.
+  void syncCrmUsersFromAuth().catch((error) => app.log.error(error, "Could not synchronise CRM users from Supabase"));
   const publishNotification = async (notification: Notification) => {
     await repos.notifications.create(notification);
     if (!hasPushConfiguration()) return;
@@ -96,6 +98,9 @@ export async function buildServer() {
     if (!s) throw Object.assign(new Error("Unauthorized"), { statusCode: 401 });
     return s;
   };
+  app.addHook("onRequest", async (req) => {
+    await auth.ensure(tokenFor(req.headers.authorization));
+  });
   const canDownloadFile = async (current: Session, filePath: string) => {
     if (current.role === "Admin") return true;
     const assignments = await repos.assignments.findAll();

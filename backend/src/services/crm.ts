@@ -124,12 +124,20 @@ export class AuthService {
   constructor(private readonly sessionStore?: Repository<SessionRecord>) {}
   private key(token: string) { return createHash("sha256").update(token).digest("hex"); }
   async restore() {
-    if (!this.sessionStore) return;
-    const records = await this.sessionStore.findAll();
-    const nowMs = Date.now();
-    await Promise.all(records.filter((record) => Date.parse(record.expiresAt) <= nowMs).map((record) => this.sessionStore!.delete(record.id)));
-    for (const record of records) if (Date.parse(record.expiresAt) > nowMs)
-      this.sessions.set(record.id, { token: record.id, userId: record.userId, name: record.name, email: record.email, role: record.role, designerId: record.designerId });
+    // Serverless instances must not load every historic session during a cold
+    // start. `ensure` restores only the current request's session on demand.
+  }
+  async ensure(token?: string) {
+    if (!token || !this.sessionStore) return;
+    const key = this.key(token);
+    if (this.sessions.has(key)) return;
+    const record = await this.sessionStore.findById(key);
+    if (!record) return;
+    if (Date.parse(record.expiresAt) <= Date.now()) {
+      await this.sessionStore.delete(key);
+      return;
+    }
+    this.sessions.set(key, { token, userId: record.userId, name: record.name, email: record.email, role: record.role, designerId: record.designerId });
   }
   async login(email: string, password: string): Promise<Session | undefined> {
     const account = this.credentials.get(email.toLowerCase());
