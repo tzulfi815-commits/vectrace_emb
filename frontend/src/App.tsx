@@ -8,6 +8,8 @@ import {
   CheckCircle2,
   ChevronRight,
   Download,
+  Eye,
+  EyeOff,
   LayoutDashboard,
   LogOut,
   Moon,
@@ -219,6 +221,7 @@ async function api<T>(
 function Login({ onLogin, theme, onToggleTheme }: { onLogin: (s: Session) => void; theme: "dark" | "light"; onToggleTheme: () => void }) {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
+    [showPassword, setShowPassword] = useState(false),
     [error, setError] = useState("");
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -257,12 +260,13 @@ function Login({ onLogin, theme, onToggleTheme }: { onLogin: (s: Session) => voi
         <label>
           Password
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
           />
         </label>
+        <button className="password-toggle-text" type="button" onClick={() => setShowPassword((shown) => !shown)}>{showPassword ? <><EyeOff size={16} /> Hide password</> : <><Eye size={16} /> Show password</>}</button>
         {error && <small className="error">{error}</small>}
         <button className="primary" type="submit">
           Sign in

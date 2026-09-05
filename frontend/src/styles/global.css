@@ -672,6 +672,8 @@ p {
   color: var(--text);
   padding: 0.65rem;
 }
+.password-toggle-text { align-items: center; background: transparent; border: 0; color: var(--primary); cursor: pointer; display: inline-flex; font: inherit; font-size: .75rem; font-weight: 700; gap: .35rem; justify-self: start; margin: -.35rem 0 .1rem; padding: .25rem 0; }
+.password-toggle-text:hover { color: var(--primary-dark); text-decoration: underline; }
 /* Login follows the Vectrace lime design independently of the in-app theme. */
 .login {
   background: #f2f3eb;
